@@ -46,20 +46,20 @@ pip install torch transformers gradio
 Calculate perplexity and activation sparsity on the TinyStories validation set:
 
 ```bash
-python src/validate.py --checkpoint src/best.pt
+python validate.py --checkpoint best.pt
 ```
 
 **3. Interactive Text Generation**
 
 ```bash
-python src/generate.py
+python generate.py
 ```
 
 **4. Web UI**
 Launch the Gradio UI for visual testing:
 
 ```bash
-python src/web_demo.py
+python web_demo.py
 ```
 
 ---
