@@ -70,7 +70,7 @@ SymbolicLight operates under a **Dual Licensing** model to support foundational 
 
 ### 1. Open Source & Academic Use (AGPLv3)
 
-This Proof-of-Concept (PoC) architecture validation snapshot and inference codebase are released under the **[GNU Affero General Public License v3.0 (AGPLv3)](LICENSE)**. We are committed to an open-architecture strategy. As we scale to 1B/3B edge models, we will continue to release upgrades under the AGPLv3 to build the Physical AI ecosystem alongside the community.
+This Proof-of-Concept (PoC) architecture validation snapshot and inference codebase are released under the **[GNU Affero General Public License v3.0 (AGPLv3)](LICENSE)**. We are committed to an open-architecture strategy. As we scale to 1B/3B/7B edge models, we will continue to release upgrades under the AGPLv3 to build the Physical AI ecosystem alongside the community.
 
 Under this license, you are free to use, modify, and distribute the code. **However, any modifications, derivative works, or services built upon this codebase (including wrapping the model as a cloud API, or embedding it into edge/terminal hardware) MUST also be entirely open-sourced under the AGPLv3.**
 
