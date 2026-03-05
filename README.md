@@ -35,6 +35,8 @@ Through this deep fusion, SymbolicLight delivers profound cognitive reasoning al
 
 ## Quick Start
 
+Pre-trained 168M weights can be downloaded from our Hugging Face repository.
+
 **1. Requirements**
 ```bash
 pip install torch transformers gradio
