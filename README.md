@@ -3,7 +3,7 @@ SymbolicLight: A natively-trained Neuro-Symbolic Spiking Language Architecture. 
 
 ### 📢 Release Notice: Inference-Only Snapshot
 
-This repository contains the **inference-only snapshot** of the SymbolicLight V1 architecture (168M parameters). 
+This repository contains the **inference-only snapshot** of the SymbolicLight-PoC architecture (168M parameters). 
 We provide the full model definition (`model.py`), autoregressive generation scripts (`generate.py`), and pre-trained weights (`best.pt`) to allow the community to verify the **90% activation sparsity**, the logic of **SparseTCAM routing**, and the effectiveness of the **Bayesian Decoding Head**.
 
 **A Note on Training Infrastructure:**
