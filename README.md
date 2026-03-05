@@ -65,7 +65,7 @@ SymbolicLight operates under a **Dual Licensing** model to support foundational 
 
 ### 1. Open Source & Academic Use (AGPLv3)
 
-This V1.0 architecture and inference codebase is released under the **[GNU Affero General Public License v3.0 (AGPLv3)](LICENSE)**. We are committed to an open-architecture strategy. As we scale to 1B/3B edge models, we will continue to release upgrades under the AGPLv3 to build the Physical AI ecosystem alongside the community.
+This Proof-of-Concept (PoC) architecture validation snapshot and inference codebase are released under the **[GNU Affero General Public License v3.0 (AGPLv3)](LICENSE)**. We are committed to an open-architecture strategy. As we scale to 1B/3B edge models, we will continue to release upgrades under the AGPLv3 to build the Physical AI ecosystem alongside the community.
 
 Under this license, you are free to use, modify, and distribute the code. **However, any modifications, derivative works, or services built upon this codebase (including wrapping the model as a cloud API, or embedding it into edge/terminal hardware) MUST also be entirely open-sourced under the AGPLv3.**
 
@@ -75,12 +75,9 @@ If you intend to integrate SymbolicLight into a proprietary, closed-source comme
 
 A Commercial License exempts you from the AGPLv3 copyleft constraints, allowing you to deploy our highly optimized sparse network code in closed-source products with full deployment support from our core engineering team.
 
-## Patent Declaration & Enforcement
+## Hardware Partnerships & Early Access
 
-The core architectures implemented in this repository—including but not limited to **SparseTCAM Routing**, **EntropyGate**, **Bayesian Head**, and **STDP Online Learning**—are protected by a comprehensive portfolio of pending and granted patents owned by Foshan Symbolic Light Technology Co., Ltd.
+While this PoC is built for architecture validation, we are actively collaborating with edge AI chip designers, robotics, and smart hardware manufacturers for our upcoming 1B+ parameter production models.
 
-* **Open-Source Grant:** Provided you strictly fulfill the comprehensive open-source obligations of the AGPLv3 (including open-sourcing your derivative code and network service backends), you are implicitly granted the necessary patent rights for your project.
-* **Commercial Infringement Warning:** Any closed-source commercial deployment, distribution, or backend service provision utilizing these patented architectures without an explicit Commercial License immediately voids the AGPLv3 patent grant and constitutes patent infringement. We reserve all rights to pursue legal action.
-
-For commercial licensing and patent inquiries, please contact:
-📧 **bd@symboliclight.com**
+If you are interested in co-designing the next generation of ultra-low-power edge devices, or require a Commercial License for future closed-source deployment, let's talk:
+📧 bd@symboliclight.com
