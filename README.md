@@ -1,6 +1,7 @@
 # SymbolicLight-PoC
 [![DOI](https://zenodo.org/badge/1173511823.svg)](https://doi.org/10.5281/zenodo.18879561)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18878295.svg)](https://doi.org/10.5281/zenodo.18878295)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-168M%20Weights-FFD21E)](https://huggingface.co/SymbolicLight-AGI/SymbolicLight-PoC)
 
 SymbolicLight: A natively-trained Neuro-Symbolic Spiking Language Architecture. Replaces dense attention with SparseTCAM and LIF neurons for 87-91% activation sparsity. (168M PoC Snapshot)
 
