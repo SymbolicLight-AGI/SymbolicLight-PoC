@@ -35,7 +35,7 @@ Through this deep fusion, SymbolicLight delivers profound cognitive reasoning al
 
 ## Usage
 
-For the complete 168M inference codebase, Bayesian Decoding Head logic, and SparseTCAM routing mechanisms, please visit our GitHub Repository.
+Pre-trained 168M weights can be downloaded from our Hugging Face repository.
 
 > All commands below should be run from the **project root directory** (the folder containing `model.py`, `generate.py`, etc.).
 
