@@ -33,30 +33,35 @@ Through this deep fusion, SymbolicLight delivers profound cognitive reasoning al
 4.  **Bayesian Head:** Replaces traditional blind-guessing Softmax with deterministic statistical inference, utilizing robust prior and posterior confidence boundaries.
 5.  **STDP Online Learning:** Achieves maintenance-free lifelong learning at the edge. Neurons naturally reshape weights based on spike timing during inference, completely eliminating the need for backpropagation gradients.
 
-## Quick Start
+## Usage
 
-Pre-trained 168M weights can be downloaded from our Hugging Face repository.
+> All commands below should be run from the **project root directory** (the folder containing `model.py`, `generate.py`, etc.).
 
-**1. Requirements**
+### Prerequisites
+
 ```bash
 pip install torch transformers gradio
 ```
 
-**2. Validation**
-Calculate perplexity and activation sparsity on the TinyStories validation set:
+### Validate Model Performance
+
+Evaluate perplexity and activation sparsity on the TinyStories validation set:
 
 ```bash
 python validate.py --checkpoint best.pt
 ```
 
-**3. Interactive Text Generation**
+### Interactive Text Generation
+
+Launch the CLI-based autoregressive generator:
 
 ```bash
 python generate.py
 ```
 
-**4. Web UI**
-Launch the Gradio UI for visual testing:
+### Web Demo
+
+Start the Gradio-based web interface for visual, interactive testing:
 
 ```bash
 python web_demo.py
