@@ -69,26 +69,3 @@ python web_demo.py
 ```
 
 ---
-
-## License & Dual Licensing
-
-SymbolicLight operates under a **Dual Licensing** model to support foundational open-source research while protecting the commercial rights of our core technology.
-
-### 1. Open Source & Academic Use (AGPLv3)
-
-This Proof-of-Concept (PoC) architecture validation snapshot and inference codebase are released under the **[GNU Affero General Public License v3.0 (AGPLv3)](LICENSE)**. We are committed to an open-architecture strategy. As we scale to 1B/3B/7B edge models, we will continue to release upgrades under the AGPLv3 to build the Physical AI ecosystem alongside the community.
-
-Under this license, you are free to use, modify, and distribute the code. **However, any modifications, derivative works, or services built upon this codebase (including wrapping the model as a cloud API, or embedding it into edge/terminal hardware) MUST also be entirely open-sourced under the AGPLv3.**
-
-### 2. Commercial License (Closed-Source Use)
-
-If you intend to integrate SymbolicLight into a proprietary, closed-source commercial product (e.g., edge AI hardware, mobile devices, autonomous driving systems, robotics, or proprietary SaaS/API platforms) without releasing your source code, you **MUST obtain a separate Commercial License**.
-
-A Commercial License exempts you from the AGPLv3 copyleft constraints, allowing you to deploy our highly optimized sparse network code in closed-source products with full deployment support from our core engineering team.
-
-## Hardware Partnerships & Early Access
-
-While this PoC is built for architecture validation, we are actively collaborating with edge AI chip designers, robotics, and smart hardware manufacturers for our upcoming 1B+ parameter production models.
-
-If you are interested in co-designing the next generation of ultra-low-power edge devices, or require a Commercial License for future closed-source deployment, let's talk:
-📧 bd@symboliclight.com
