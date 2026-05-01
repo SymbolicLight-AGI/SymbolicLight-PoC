@@ -1,71 +1,129 @@
 # SymbolicLight-PoC
-[![DOI](https://zenodo.org/badge/1173511823.svg)](https://doi.org/10.5281/zenodo.18879561)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18878295.svg)](https://doi.org/10.5281/zenodo.18878295)
 
-SymbolicLight: A natively-trained Neuro-Symbolic Spiking Language Architecture. Replaces dense attention with SparseTCAM and LIF neurons for 87-91% activation sparsity. (168M PoC Snapshot)
+[Chinese README](README_zh-CN.md)
 
-### 📢 Release Notice: Inference-Only Snapshot
+SymbolicLight-PoC is an inference-only proof-of-concept release for a spiking language model architecture. It includes the model definition, generation and validation entry points, a Gradio demo, and a pretrained checkpoint.
 
-This repository contains the **inference-only snapshot** of the SymbolicLight-PoC architecture (168M parameters). 
-We provide the full model definition (`model.py`), autoregressive generation scripts (`generate.py`), and pre-trained weights (`best.pt`) to allow the community to verify the **90% activation sparsity**, the logic of **SparseTCAM routing**, and the effectiveness of the **Bayesian Decoding Head**.
+This package is intended for code inspection, local inference, and basic validation. It does not include the training pipeline.
 
-**A Note on Training Infrastructure:**
-Training spiking language models natively from scratch involves extremely non-trivial surrogate gradient calibration, customized optimizer scheduling, and distributed stabilization techniques. As we are actively advancing toward the 1B+ scale, these proprietary training infrastructures, scripts (`train.py`), and dynamic datasets are excluded from this initial public codebase.
+## Contents
 
----
+```text
+.
+|-- LICENSE
+|-- README.md
+|-- README_zh-CN.md
+`-- src
+    |-- best.pt
+    |-- generate.py
+    |-- model.py
+    |-- validate.py
+    `-- web_demo.py
+```
 
-## A Next-Generation Neuro-Symbolic Spiking Language Model
+## Release Scope
 
-SymbolicLight is not just another connectionist deep learning model; it is a **true Neuro-Symbolic system natively fused at the lowest architectural level**.
+Included:
 
-We reject the superficial "LLM + external calculator/knowledge graph" paradigm. Instead, we weave continuous connectionist networks with discrete symbolic logic systems at the fundamental computational unit:
-* **Neuro (The Connectionist Engine):** Retains biological generalization and learning capabilities based on synaptic plasticity (STDP), enabling it to process fuzzy, high-dimensional natural language representations and continuously evolve during inference.
-* **Symbolic (The Logic Controller):** Utilizes discrete binary spikes (0/1) as information carriers. This inherent Boolean logic directly triggers deterministic content-addressable memory (SparseTCAM) in the backend—replacing probabilistic attention—and forcibly injects rule-based conditional branching via an EntropyGate and a Bayesian Head.
+- Model architecture in `src/model.py`
+- Pretrained checkpoint at `src/best.pt`
+- Command-line text generation script
+- TinyStories validation script
+- Local Gradio web demo
 
-Through this deep fusion, SymbolicLight delivers profound cognitive reasoning alongside **transparent interpretability** and a theoretical **100x leap in hardware execution efficiency** on edge devices.
+Not included:
 
-## Key Innovations
+- Training script
+- Training dataset
+- Optimizer and scheduler configuration
+- Distributed training setup
+- Reproduction logs for the released checkpoint
 
-1.  **SparseTCAM Routing:** We completely abandon the $O(n^2)$ probabilistic self-attention of traditional Transformers. Instead, we deploy $O(n \cdot k)$ Sparse Content-Addressable Memory, routing signals deterministically based on explicit Boolean logic.
-2.  **LIF Neurons (Ultra-Sparse Spiking Engine):** Event-driven neuron clusters maintain an up to 90% resting rate (zero spikes) during inference, entirely bypassing massive dense matrix multiplications.
-3.  **EntropyGate (White-Box Logic Control):** Introduces `If-Else` conditional branching into the deepest layers of the neural network. Low-entropy tokens trigger rule-based "Early Exits," avoiding redundant computation.
-4.  **Bayesian Head:** Replaces traditional blind-guessing Softmax with deterministic statistical inference, utilizing robust prior and posterior confidence boundaries.
-5.  **STDP Online Learning:** Achieves maintenance-free lifelong learning at the edge. Neurons naturally reshape weights based on spike timing during inference, completely eliminating the need for backpropagation gradients.
+## Requirements
+
+Python 3.10 or newer is recommended.
+
+Install the runtime dependencies:
+
+```bash
+pip install torch tiktoken datasets gradio
+```
+
+`validate.py` downloads the TinyStories validation split through `datasets`, so it requires network access unless the dataset is already cached.
 
 ## Usage
 
-Pre-trained 168M weights can be downloaded from our Hugging Face repository. [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-168M%20Weights-FFD21E)](https://huggingface.co/SymbolicLight-AGI/SymbolicLight-PoC)
+Run commands from the package root directory, the directory that contains `README.md` and `src`.
 
-> All commands below should be run from the **project root directory** (the folder containing `model.py`, `generate.py`, etc.).
+### Text Generation
 
-### Prerequisites
-
-```bash
-pip install torch transformers gradio
-```
-
-### Validate Model Performance
-
-Evaluate perplexity and activation sparsity on the TinyStories validation set:
+Single prompt mode:
 
 ```bash
-python validate.py --checkpoint best.pt
+python src/generate.py --checkpoint src/best.pt --prompt "Once upon a time"
 ```
 
-### Interactive Text Generation
-
-Launch the CLI-based autoregressive generator:
+Interactive mode:
 
 ```bash
-python generate.py
+python src/generate.py --checkpoint src/best.pt
 ```
+
+Optional generation parameters:
+
+```bash
+python src/generate.py --checkpoint src/best.pt --prompt "The cat" --max_tokens 100 --temperature 0.8 --top_k 50
+```
+
+### Validation
+
+Run a small validation pass:
+
+```bash
+python src/validate.py --checkpoint src/best.pt --max_samples 500 --batch_size 8
+```
+
+The validation script reports loss and perplexity. It also runs a short text generation demo after validation.
 
 ### Web Demo
 
-Start the Gradio-based web interface for visual, interactive testing:
+Start the local Gradio interface:
 
 ```bash
-python web_demo.py
+python src/web_demo.py --checkpoint src/best.pt
 ```
 
----
+The default address is:
+
+```text
+http://127.0.0.1:7870
+```
+
+To use another port:
+
+```bash
+python src/web_demo.py --checkpoint src/best.pt --port 7871
+```
+
+## Architecture Summary
+
+The implementation contains the following components:
+
+- `SpikeEncoder`: token and position embeddings followed by LIF-style spike generation
+- `SparseTCAM`: spike-conditioned routing implemented with PyTorch tensor operations
+- `SpikingFeedForward`: feed-forward block with spike activation in the intermediate layer
+- `EntropyGate`: entropy-based early-exit signal, disabled by default in the released configuration
+- `BayesianHead`: output projection with a learned token prior
+- `STDPUpdater`: optional local update path for inference experiments, disabled by default
+
+These components are implemented in standard PyTorch for inspection and local execution.
+
+## Checkpoint Notes
+
+The included checkpoint is loaded with `torch.load`. Only load checkpoints from trusted sources.
+
+The scripts accept checkpoints with a `config` entry and model weights under either `model` or `model_state_dict`, depending on the script.
+
+## License
+
+This project is licensed under the Apache-2.0 license. See [LICENSE](LICENSE) for details.
